@@ -1,0 +1,11 @@
+.ipynb_checkpoints
+.ok_messages
+.ok_storage
+.ok*
+__pycache__
+*.out*
+build
+env
+*.swp
+.DS_store
+.nfs*
