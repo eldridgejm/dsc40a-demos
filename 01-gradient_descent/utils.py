@@ -66,9 +66,6 @@ def visualize_gradient_descent(
     # plot of the current position
     current_ln, = ax.plot(h, [f(h[0])], 'ro', color='black')
     
-    # plot of the next position
-    next_ln, = ax.plot([], [], 'ro', color='C1', zorder=10);
-    
     # plot of the tangent line
     tangent_ln, = ax.plot([], [], linestyle='--', color='black')
     
@@ -78,7 +75,7 @@ def visualize_gradient_descent(
     plt.close()
     
     def init():
-        return next_ln, tangent_ln, current_ln
+        return tangent_ln, current_ln
 
     def update(frame):
         current_ln.set_data(h[0], [f(h[0])])
@@ -90,8 +87,6 @@ def visualize_gradient_descent(
                 max_iter=1
             )
 
-        next_ln.set_data(h_next, f(h_next))
-        
         arrow = ax.arrow(
             h[0], f(h[0]), (h_next - h[0]), 0, 
             color='black',
@@ -112,7 +107,7 @@ def visualize_gradient_descent(
 
         h[0] = h_next
         
-        return next_ln, tangent_ln, current_ln
+        return tangent_ln, current_ln
 
     
     ani = animation.FuncAnimation(fig, update, frames=n_iters,
